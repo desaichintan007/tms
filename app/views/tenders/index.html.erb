@@ -3,39 +3,126 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
-      <a href="#all" aria-controls="home" role="tab" data-toggle="tab">Home</a>
+      <a href="#all" aria-controls="home" role="tab" data-toggle="tab">All Tenders</a>
     </li>
     <li role="presentation">
-      <a href="#older" aria-controls="profile" role="tab" data-toggle="tab">Profile</a>
+      <a href="#available" aria-controls="messages" role="tab" data-toggle="tab">Active Tenders</a>
     </li>
     <li role="presentation">
-      <a href="#available" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
+      <a href="#older" aria-controls="profile" role="tab" data-toggle="tab">Previous Tenders</a>
     </li>
     <li role="presentation">
-      <a href="#upcoming" aria-controls="settings" role="tab" data-toggle="tab">Settings</a>
+      <a href="#upcoming" aria-controls="settings" role="tab" data-toggle="tab">Upcoming Tenders</a>
     </li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
+
     <div role="tabpanel" class="tab-pane active" id="all">
       <div class="row">
-        <div class="col-lg-12">   
+        <div class="col-lg-12">  
+          <br>
+          <table class="table table-striped">
+            <th>Index</th>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Minimum Budget</th>
+            <th>Notice Duration</th>
+            <% @all_tenders.each_with_index do |tender,index| %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= tender.title %></td>
+                <td><%= tender.start_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.end_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.minimum_budget %></td>
+                <td><%= tender.notice_duration %> days</td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="available">
+      <div class="row">
+        <div class="col-lg-12">
+          <br>  
+          <table class="table table-striped">
+            <th>Index</th>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Minimum Budget</th>
+            <th>Notice Duration</th>
+            <% @available_tenders.each_with_index do |tender,index| %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= tender.title %></td>
+                <td><%= tender.start_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.end_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.minimum_budget %></td>
+                <td><%= tender.notice_duration %> days</td>
+              </tr>
+            <% end %>
+          </table>  
         </div>
       </div>
     </div>
 
     <div role="tabpanel" class="tab-pane fade" id="older">
-    Tenders which are closed  
-    </div>
-
-    <div role="tabpanel" class="tab-pane fade" id="available">
-    tenders which are still available and open for applicants
+      <div class="row">
+        <div class="col-lg-12">  
+            <br>
+          <table class="table table-striped">
+            <th>Index</th>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Minimum Budget</th>
+            <th>Notice Duration</th>
+            <% @previous_tenders.each_with_index do |tender,index| %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= tender.title %></td>
+                <td><%= tender.start_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.end_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.minimum_budget %></td>
+                <td><%= tender.notice_duration %> days</td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div role="tabpanel" class="tab-pane fade" id="upcoming">
-    tenders which are not yet open but will be available for the applications soon.
+      <div class="row">
+        <div class="col-lg-12">  
+            <br>
+          <table class="table table-striped">
+            <th>Index</th>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Minimum Budget</th>
+            <th>Notice Duration</th>
+            <% @upcoming_tenders.each_with_index do |tender,index| %>
+              <tr>
+                <td><%= index+1 %></td>
+                <td><%= tender.title %></td>
+                <td><%= tender.start_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.end_date.strftime("%d %b %Y") %></td>
+                <td><%= tender.minimum_budget %></td>
+                <td><%= tender.notice_duration %> days</td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
     </div>
+
   </div>
 
 </div>

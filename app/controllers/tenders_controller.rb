@@ -3,7 +3,10 @@ class TendersController < ApplicationController
 	before_action :check_issuer?, :only => [:new, :create, :index]
 
 	def index
-		@tenders = current_user.tenders
+		@all_tenders = current_user.tenders
+		@available_tenders = current_user.tenders.available_tenders
+		@previous_tenders = current_user.tenders.previous_tenders
+		@upcoming_tenders = current_user.tenders.upcoming_tenders
 	end
 
 	def new
