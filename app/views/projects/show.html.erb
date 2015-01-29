@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">  
+ 	  <div class="col-lg-8 col-lg-offset-2">  
+			<h3>My Project : <%= @project.title %></h3>
+		</div>	
+	</div>
+
+  <div class="row mt">  
+    <div class="col-lg-8 col-lg-offset-2">  
+
+		  <% @project_images.each do |image| %>
+		  	<div class="thumbnail">
+		  		<%= image_tag image.image.url  %>
+		  	</div>
+		  <% end %>	
+    	
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Project Description</h4>
+			  <p><%= @project.description.html_safe %></p>
+			</div>		
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Dates</h4>
+			  <p><%= @project.start_date.strftime("%B %d, %Y") %> - <%= @project.end_date.strftime("%B %d, %Y") %></p>
+			</div>
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Project Budget</h4>
+			  <p><%= @project.budget %></p>
+			</div>
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>About Associated People to this project</h4>
+			  <p><%= @project.associated_people %></p>
+			</div>
+
+			<%= link_to "< back", :back %>
+
+    </div>
+	</div>
+</div>

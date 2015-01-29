@@ -1,0 +1,60 @@
+<div class="container pt">
+	<div class="row">  
+ 	  <div class="col-lg-8 col-lg-offset-2">  
+			<h3>New Project for My Portfolio</h3>
+		</div>	
+	</div>
+
+  <div class="row mt">  
+    <div class="col-lg-8 col-lg-offset-2">  
+
+    	<%= form_for @project, :html => {:role=>"form",:multipart => true} do |f| %>
+
+    		<%= f.hidden_field :user_id %>
+
+     		<div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, :class => "form-control", :placeholder => "Title of project" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.cktext_area :description, :class => "form-control", :placeholder => "Write something about your work in project" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :budget %>
+          <%= f.date_field :budget, :class => "form-control", :placeholder => "Your budget of this work" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :start_date %>
+          <%= f.date_field :start_date, :class => "form-control width200", :placeholder => "yyyy/mm/dd" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :end_date %>
+          <%= f.text_field :end_date, :class => "form-control width200", :placeholder => "yyyy/mm/dd" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "About Client/Company" %>
+          <%= f.text_area :associated_people, :class => "form-control", :placeholder => "Write something about people with whome you worked / you worked for" %>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag "Image" %>
+          <%= file_field_tag :image %>
+        </div>
+
+        <%= link_to "Back", :back %>
+        <div class="actions pull-right">
+        	<%= f.submit "Create", :class => "btn btn-success" %>
+      	</div>	
+
+     <% end %>
+
+    </div>
+  </div>
+
+</div>

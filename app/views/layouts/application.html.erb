@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	  <title>TenderManagementSystem</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+
+	<body>
+
+		<!-- header -->
+		<div class="navbar navbar-inverse navbar-static-top">
+		  <div class="container">
+				<%= render "layouts/shared/common_header" %>
+			</div>
+		</div>	
+		<!-- /header -->
+
+		<!-- error messages -->
+		<div id="flashMessages">
+			<%= render "layouts/shared/errors" %>
+		</div>
+		<!-- /error messages -->
+
+		<!-- body -->
+		<div class="wrapper">
+			<div class="container mrgtop20">		
+				<%= yield %>
+			</div>
+		</div>
+		<!-- /body -->
+
+		<!-- footer -->
+		<div id="footer" style="margin-bottom:0px;">
+			<div class="container">
+				<%= render "layouts/shared/common_footer" %>	
+			</div>
+		</div>
+		<!-- /footer -->
+
+	</body>
+	
+</html>

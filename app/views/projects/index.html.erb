@@ -1,0 +1,21 @@
+<%= link_to "Add Project to my portfolio", new_project_path %>
+
+<h2>My Portfolio</h2>
+
+<div class="row mrgtop30">
+
+	<% @projects.each do |project| %>
+
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	    	<%= image_tag project.pictures.first.image.url, :alt => "Project Cover" %>
+	      <div class="caption">
+	        <h3><%= project.title %></h3>
+	        <p><%= link_to "View Details", project_path(project), :class=>"btn btn-primary", :role=>"button" %></p>
+	      </div>
+	    </div>
+	  </div>
+
+	<% end %>
+
+</div>

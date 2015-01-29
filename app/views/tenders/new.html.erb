@@ -1,0 +1,56 @@
+<div class="container pt">
+	<div class="row">  
+ 	  <div class="col-lg-8 col-lg-offset-2">  
+			<h3>Create New Tender</h3>
+		</div>	
+	</div>
+
+  <div class="row mt">  
+    <div class="col-lg-8 col-lg-offset-2">  
+
+    	<%= form_for @tender, :html => {:role=>"form",:multipart => true} do |f| %>
+
+    		<%= f.hidden_field :user_id %>
+
+ 				<div class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, :class => "form-control", :placeholder => "Title of Tender" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.cktext_area :description, :class => "form-control", :placeholder => "Write something about your project to inform applicants about your project." %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :minimum_budget %>
+          <em> (Place minimum budget to allow applicants in their applications.)</em>
+          <%= f.date_field :minimum_budget, :class => "form-control width200", :placeholder => "Currency will be in INR" %> 
+        </div>
+
+        <div class="form-group">
+          <%= f.label :start_date %>
+          <%= f.text_field :start_date, :class => "form-control width200", :placeholder => "yyyy/mm/dd" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :end_date %>
+          <%= f.text_field :end_date, :class => "form-control width200", :placeholder => "yyyy/mm/dd" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :notice_duration %>
+          <%= f.text_field :notice_duration, :class => "form-control", :placeholder => "Write number of days to inform users before your tender becomes publically available" %>
+        </div>
+
+        <%= link_to "< Back", :back %>
+        <div class="actions pull-right">
+        	<%= f.submit "Create", :class => "btn btn-success" %>
+      	</div>	
+
+     <% end %>
+
+    </div>
+  </div>
+
+</div>
