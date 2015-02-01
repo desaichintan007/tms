@@ -124,3 +124,18 @@ html, body {
     color: #1ABC9C;
 }
 /*------ bs-callout css ------*/
+
+.glyphicon-size-small{
+    font-size:1.4em;
+}
+
+.height600{
+    height: 600px;
+}
+
+.color333{
+    color: #333;
+}
+.colorfff{
+    color: #fff;
+}

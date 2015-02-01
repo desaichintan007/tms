@@ -30,6 +30,9 @@
             <th>End Date</th>
             <th>Minimum Budget</th>
             <th>Notice Duration</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
             <% @all_tenders.each_with_index do |tender,index| %>
               <tr>
                 <td><%= index+1 %></td>
@@ -38,6 +41,21 @@
                 <td><%= tender.end_date.strftime("%d %b %Y") %></td>
                 <td><%= tender.minimum_budget %></td>
                 <td><%= tender.notice_duration %> days</td>
+                <td>
+                  <%= link_to tender_path(tender.id) do %>  
+                    <span class="glyphicon glyphicon-list-alt glyphicon-size-small"></span>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to edit_tender_path(tender.id) do %>  
+                    <span class="glyphicon glyphicon-edit glyphicon-size-small"></span>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to tender_path(tender.id), :method => :delete do %>  
+                    <span class="glyphicon glyphicon-trash glyphicon-size-small"></span>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </table>
@@ -115,7 +133,7 @@
                 <td><%= tender.start_date.strftime("%d %b %Y") %></td>
                 <td><%= tender.end_date.strftime("%d %b %Y") %></td>
                 <td><%= tender.minimum_budget %></td>
-                <td><%= tender.notice_duration %> days</td>
+                <td><%= tender.notice_duration %> days </td>
               </tr>
             <% end %>
           </table>

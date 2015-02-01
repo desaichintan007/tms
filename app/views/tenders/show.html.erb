@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">  
+ 	  <div class="col-lg-8 col-lg-offset-2">
+ 	  	<h3>Tender by <i> <%= @tender.user.full_name %> </i></h3>  
+		</div>	
+	</div>
+
+  <div class="row">  
+    <div class="col-lg-8 col-lg-offset-2"> 
+
+    	<div class="bs-callout bs-callout-theme">
+			  <h4>Title</h4>
+			  <p><b><%= @tender.title %></b></p>
+			</div>	 
+    	
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Tender Description</h4>
+			  <p><%= @tender.description.html_safe %></p>
+			</div>		
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Dates</h4>
+			  <p><%= @tender.start_date.strftime("%B %d, %Y") %> - <%= @tender.end_date.strftime("%B %d, %Y") %></p>
+
+			  <h4>Notice duration for applications</h4>
+			  <p><%= @tender.notice_duration %></p>
+			</div>
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Minimum Project Budget</h4>
+			  <p><%= @tender.minimum_budget %></p>			  
+			</div>
+
+			<%= link_to "< back", :back %>
+
+    </div>
+	</div>
+</div>
+
+<div class="mt"></div>

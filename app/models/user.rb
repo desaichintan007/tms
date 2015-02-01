@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :first_name, :last_name, :address, :contact
 
+  def full_name
+    [first_name,last_name].join(" ")
+  end
 
   def	is_issuer?
   	return (self.role==ROLE[2] ? true : false)
