@@ -1,0 +1,50 @@
+<div class="row">
+
+  <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+    <h3 class="text-center"> Active Tenders </h3>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>Title</th>
+          <th>Last Date</th>
+          <th>Tender By</th>
+          <th>Apply</th>
+          <th>View</th>
+        </tr>
+        <% @active_tenders.each do |tender| %>
+          <tr>
+            <td><b><%= tender.title %></b></td>
+            <td><%= tender.end_date %></td>
+            <td><%= tender.user.full_name %></td>
+            <td><%= link_to "Apply" %></td>
+            <td><%= link_to "View", tender_path(tender.id) %></td>
+          </tr>
+        <% end %>
+      </table>
+      <h4 class="text-center"><%= link_to "View all..", active_tenders_path %></h4>
+    </div>
+  </div>
+
+
+  <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+    <h3 class="text-center"> Tenders Coming Soon </h3>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>Title</th>
+          <th>Start Date</th>
+          <th>Tender By</th>
+        </tr>
+        <% @upcoming_tenders.each do |tender| %>
+          <tr>
+            <td><b><%= tender.title %></b></td>
+            <td><%= tender.start_date %></td>
+            <td><%= tender.user.full_name %></td>
+          </tr>
+        <% end %>
+      </table>
+      <h4 class="text-center"><%= link_to "View all..", upcoming_tenders_path %></h4>
+    </div>
+  </div>
+
+</div>

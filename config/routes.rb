@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root :to => "homes#index"
+  get "/active_tenders" => "homes#all_active_tenders"
+  get "/upcoming_tenders" => "homes#all_upcoming_tenders"
 
   resources :users
 

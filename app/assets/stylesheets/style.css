@@ -132,10 +132,26 @@ html, body {
 .height600{
     height: 600px;
 }
+.height200{
+    height: 220px;
+}
 
 .color333{
     color: #333;
 }
 .colorfff{
     color: #fff;
+}
+
+.applicant-back-img{
+    background-image: url(/assets/issuer2.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+}
+.issuer-back-img{
+    background-image: url(/assets/applicant1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
 }

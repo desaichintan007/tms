@@ -1,0 +1,39 @@
+<div class="container pt">
+
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 centered">
+      <h3>Upcoming Tenders</h3>
+      <hr>
+      <p>
+	      Hello Applicants..! 
+	      <br> 
+	      Please check the below list of all upcoming tenders and you can apply to them when they are available as active tenders soon..
+      </p>
+    </div>
+  </div>
+
+  <div class="row">  
+    <div class="col-lg-8 col-lg-offset-2"> 
+	    <div class="table-responsive"> 
+	    	<table class="table table-striped">
+	  			<tr>
+	  				<th>Title</th>
+	  				<th>Started Date</th>
+	  				<th>Ending Date</th>
+	  				<th>Tender By</th>
+	  			</tr>
+	  			<% @upcoming_tenders.each do |tender| %>
+          <tr>
+            <td><b><%= tender.title %></b></td>
+            <td><%= tender.start_date %></td>
+            <td><%= tender.end_date %></td>
+            <td><%= tender.user.full_name %></td>
+          </tr>
+        <% end %>
+				</table>
+			</div>	
+      <%= link_to "< Back", :back %>
+    </div>
+  </div>
+
+</div>

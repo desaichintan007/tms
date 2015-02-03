@@ -26,7 +26,14 @@
 
 		<!-- body -->
 		<div class="wrapper">
+		<% if params[:controller]=="homes" %>
 			<%= yield %>
+		<% else %>
+			<div class="container mrgtop30">
+				<%= yield %>
+			</div>
+		<% end %>	
+		
 		</div>
 		<!-- /body -->
 

@@ -1,5 +1,6 @@
 class TendersController < ApplicationController
 
+	before_action :authenticate_user!, :except => [:show]
 	before_action :check_issuer?, :only => [:new, :create, :index]
 	before_action :get_tender, :only => [:show, :edit, :update, :destroy]
 

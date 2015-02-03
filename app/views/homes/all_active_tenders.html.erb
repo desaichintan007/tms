@@ -1,0 +1,42 @@
+<div class="container pt">
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 centered">
+      <h3>Active Tenders</h3>
+      <hr>
+      <p>
+	      Hello Applicants..! 
+	      <br> 
+	      Please check the below list of all active tenders and you can apply to any one of below you are interested in..
+      </p>
+    </div>
+  </div>
+
+  <div class="row">  
+    <div class="col-lg-8 col-lg-offset-2"> 
+	    <div class="table-responsive"> 
+	    	<table class="table table-striped">
+	  			<tr>
+	  				<th>Title</th>
+	  				<th>Started Date</th>
+	  				<th>Ending Date</th>
+	  				<th>Tender By</th>
+	  				<th>Apply</th>
+	  				<th>View</th>
+	  			</tr>
+	  			<% @active_tenders.each do |tender| %>
+          <tr>
+            <td><b><%= tender.title %></b></td>
+            <td><%= tender.start_date %></td>
+            <td><%= tender.end_date %></td>
+            <td><%= tender.user.full_name %></td>
+            <td><%= link_to "Apply" %></td>
+            <td><%= link_to "View", tender_path(tender.id) %></td>
+          </tr>
+        <% end %>
+				</table>
+			</div>	
+			<%= link_to "< Back", :back %>
+    </div>
+  </div>
+
+</div>

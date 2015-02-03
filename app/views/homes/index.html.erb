@@ -1,47 +1,8 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag "slider1.jpg" %>
-      <div class="carousel-caption">
-        Build your dream project.!
-      </div>
-    </div>
-    <div class="item">
-      <%= image_tag "slider2.jpg"  %>
-      <div class="carousel-caption color333">
-        Get best contractors and solution.!
-      </div>
-    </div>
-    <div class="item">
-      <%= image_tag "slider3.jpg"  %>
-      <div class="carousel-caption color333">
-        Plan well to succeed.!
-      </div>
-    </div>
-    <div class="item">
-      <%= image_tag "slider4.jpg"  %>
-      <div class="carousel-caption">
-        woohoo.. Boost your project.!
-      </div>
-    </div>
-  </div>
+<%= render "homes/carousal_slider" %>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+<%= render "homes/applicants_issuer_jumbotron" %>
+
+<div class="container mrgtop10">
+  <%= render "homes/projects_display_window" %>
+</div>  
