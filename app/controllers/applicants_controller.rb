@@ -1,9 +1,11 @@
 class ApplicantsController < ApplicationController
 	before_action :authenticate_user!
-	before_filter :check_is_applicant?
+	before_action :check_is_applicant?
 
 	def dashboard
 	end
+
+	protected
 
 	def check_is_applicant?
 		unless is_applicant?

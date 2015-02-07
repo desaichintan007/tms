@@ -29,7 +29,7 @@
             <td><%= tender.start_date %></td>
             <td><%= tender.end_date %></td>
             <td><%= tender.user.full_name %></td>
-            <td><%= link_to "Apply" %></td>
+            <td><%= link_to "Apply", new_application_path(:tender_id => tender.id) %></td>
             <td><%= link_to "View", tender_path(tender.id) %></td>
           </tr>
         <% end %>

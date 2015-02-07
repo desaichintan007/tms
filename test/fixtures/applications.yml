@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cover: MyText
+  proposal: MyText
+  estimated_budget: MyString
+  estimated_time: MyString
+  status: MyString
+  user_id: 1
+  tender_id: 1
+
+two:
+  cover: MyText
+  proposal: MyText
+  estimated_budget: MyString
+  estimated_time: MyString
+  status: MyString
+  user_id: 1
+  tender_id: 1
