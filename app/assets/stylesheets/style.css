@@ -3,6 +3,7 @@
 }
 html, body {
     height: 100%;
+    /*background: #E8E8E8;*/
 }
 .wrapper {
     min-height: 70%;

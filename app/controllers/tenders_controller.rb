@@ -2,7 +2,7 @@ class TendersController < ApplicationController
 
 	before_action :authenticate_user!, :except => [:show]
 	before_action :check_issuer?, :only => [:new, :create, :index]
-	before_action :get_tender, :only => [:show, :edit, :update, :destroy]
+	before_action :get_tender, :only => [:show, :edit, :update, :destroy, :all_applications]
 
 	def index
 		@all_tenders = current_user.tenders
@@ -24,6 +24,10 @@ class TendersController < ApplicationController
 			flash[:error] = @tender.errors.full_messages.to_sentence
 			render :new
 		end		
+	end
+
+	def all_applications
+		@applications = @tender.applications
 	end
 
 	def show

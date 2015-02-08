@@ -19,9 +19,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects
-
-  resources :tenders
+  resources :projects 
+  get "/:user_id/portfolio" => "projects#portfolio", :as => "portfolio"
+    
+  resources :tenders do
+    member do
+      get "all_applications"
+    end
+  end
 
   resources :applications
 

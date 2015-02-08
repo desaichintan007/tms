@@ -5282,6 +5282,7 @@ a.list-group-item.active > .badge,
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;
+  height: 450px;
 }
 
 a.thumbnail:hover,

@@ -1,10 +1,17 @@
 class ProjectsController < ApplicationController
 
-	before_action :authenticate_user!, :except => [:index, :show]
+	before_action :authenticate_user!, :except => [:index, :show, :portfolio]
 	before_action :get_project, :only => [:show]
 
 	def index
+		@user = current_user
 		@projects = current_user.projects
+	end
+
+	def portfolio
+		@user = User.find(params[:user_id])
+		@projects = @user.projects
+		render :index
 	end
 
 	def show

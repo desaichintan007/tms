@@ -1,0 +1,47 @@
+<h2>All application for tender : <%= @tender.title %></h2>
+<br>
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-info">
+      <div class="panel-heading"><b>Applications' Numbers</b></div>
+      <ul class="list-group">
+        <li class="list-group-item">Total Applications : <%= @applications.count %></li>
+        <li class="list-group-item">Pending Applications : <%= @applications.where(:status => Application::STATUS[0]).count %></li>
+        <li class="list-group-item">Selected Applications : <%= @applications.where(:status => Application::STATUS[1]).count %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <th>Index</th>
+        <th>Cover</th>
+        <th>Estimated Budget</th>
+        <th>Estimated Time Duration</th>
+        <th>Application By</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <% @applications.each_with_index do |application,index| %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= truncate(application.cover, :length => 30) %></td>
+            <td><%= application.estimated_budget %></td>
+            <td><%= application.estimated_time %></td>
+            <td><%= link_to application.user.full_name, portfolio_path(:user_id => application.user.id) %></td>
+            <td><%= application.status.capitalize %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>    
+      </table>
+    </div>
+  </div>
+</div>

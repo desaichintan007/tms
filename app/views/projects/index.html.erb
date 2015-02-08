@@ -1,6 +1,9 @@
-<%= link_to "Add Project to my portfolio", new_project_path %>
-
-<h2>My Portfolio</h2>
+<% if @user == current_user %>
+	<%= link_to "Add Project to my portfolio", new_project_path %>
+	<h2>My Portfolio</h2>
+<% else %>
+	<h2>Portfolio of <%= @user.full_name %></h2>
+<% end %>	
 
 <div class="row mrgtop30">
 
