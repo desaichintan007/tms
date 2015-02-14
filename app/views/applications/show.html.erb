@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row">  
+ 	  <div class="col-lg-8 col-lg-offset-2">  
+			<h3> Application for <b><%= @tender.title %></b> <small>by</small> <b><%= @applicant.full_name %></b></h3>
+		</div>	
+	</div>
+
+  <div class="row mt">  
+    <div class="col-lg-8 col-lg-offset-2">  
+    	
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Application Cover</h4>
+			  <p><%= @application.cover %></p>
+			</div>		
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Application Proposal</h4>
+			  <p><%= @application.proposal.html_safe %></p>
+			</div>
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Estimated Budget for <%= @tender.title %></h4>
+			  <p><%= @application.estimated_budget %> Rs.</p>
+			</div>
+
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Estimated Time Duration for <%= @tender.title %></h4>
+			  <p><%= @application.estimated_time %></p>
+			</div>
+
+
+			<div class="bs-callout bs-callout-theme">
+			  <h4>Applicant Details</h4>
+			  <p>
+				  <b>Name : </b><%= @applicant.full_name %><br>
+				  <b>Email : </b><%= @applicant.email %><br>
+				  <b>Address : </b><%= @applicant.address %><br>
+				  <b>Contact Num : </b><%= @applicant.contact %>
+			  </p>
+			</div>
+
+			<% if current_user.is_issuer? %>
+					<button class="btn btn-primary pull-right">Select This Applicant</button>
+					<button class="btn btn-danger pull-right mrgrht10">Reject This Proposal</button>
+			<% end %>	
+
+			<%= link_to "< back", :back %>
+
+    </div>
+	</div>
+</div>
