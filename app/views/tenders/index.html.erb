@@ -1,3 +1,5 @@
+<h2 class="mrgbtm20">My Tenders</h2>
+
 <div role="tabpanel">
 
   <!-- Nav tabs -->
@@ -59,7 +61,7 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to "View Applications", all_applications_tender_path(tender) %>
+                    <%= (link_to "View Applications", all_applications_tender_path(tender)) if !(tender.is_upcoming?) %>
                   </td>
                 </tr>
               <% end %>
@@ -84,6 +86,7 @@
               <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
+              <th></th>
               <% @available_tenders.each_with_index do |tender,index| %>
                 <tr>
                   <td><%= index+1 %></td>
@@ -106,6 +109,9 @@
                     <%= link_to tender_path(tender.id), :method => :delete do %>  
                       <span class="glyphicon glyphicon-trash glyphicon-size-small"></span>
                     <% end %>
+                  </td>
+                  <td>
+                    <%= link_to "View Applications", all_applications_tender_path(tender) %>
                   </td>
                 </tr>
               <% end %>
@@ -130,6 +136,7 @@
               <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
+              <th></th>
               <% @previous_tenders.each_with_index do |tender,index| %>
                 <tr>
                   <td><%= index+1 %></td>
@@ -152,6 +159,9 @@
                     <%= link_to tender_path(tender.id), :method => :delete do %>  
                       <span class="glyphicon glyphicon-trash glyphicon-size-small"></span>
                     <% end %>
+                  </td>
+                  <td>
+                    <%= link_to "View Applications", all_applications_tender_path(tender) %>
                   </td>
                 </tr>
               <% end %>
@@ -209,4 +219,8 @@
 
   </div>
 
+</div>
+
+<div>
+  <%= link_to "< Back", :back %>
 </div>

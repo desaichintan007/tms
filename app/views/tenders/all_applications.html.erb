@@ -25,7 +25,7 @@
         <th>Estimated Time Duration</th>
         <th>Application By</th>
         <th>Status</th>
-        <th></th>
+        <th> View </th>
         <th></th>
         <th></th>
         <% @applications.each_with_index do |application,index| %>
@@ -36,7 +36,11 @@
             <td><%= application.estimated_time %></td>
             <td><%= link_to application.user.full_name, portfolio_path(:user_id => application.user.id) %></td>
             <td><%= application.status.capitalize %></td>
-            <td></td>
+            <td>
+              <%= link_to application_path(application.id,:tender_id => @tender.id) do %>  
+                <span class="glyphicon glyphicon-list-alt glyphicon-size-small"></span>
+              <% end %> 
+            </td>
             <td></td>
             <td></td>
           </tr>
@@ -45,3 +49,5 @@
     </div>
   </div>
 </div>
+
+<%= link_to "< Back", :back %>
