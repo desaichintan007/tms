@@ -1,0 +1,30 @@
+<%= f.hidden_field :user_id %>
+
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, :class => "form-control", :placeholder => "Title of project" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.cktext_area :description, :class => "form-control", :placeholder => "Write something about your work in project" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :budget %>
+  <%= f.text_field :budget, :class => "form-control", :placeholder => "Your budget of this work" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, :class => "form-control width200", :placeholder => "yyyy/mm/dd" %>
+</div>
+
+<div class="form-group">
+  <%= f.date_field :end_date, :class => "form-control width200", :placeholder => "yyyy/mm/dd" %>
+</div>
+
+<div class="form-group">
+  <%= f.label "About Client/Company" %>
+  <%= f.text_area :associated_people, :class => "form-control", :placeholder => "Write something about people with whome you worked / you worked for" %>
+</div>

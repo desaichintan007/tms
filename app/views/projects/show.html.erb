@@ -12,8 +12,8 @@
 		  	<div class="thumbnail">
 		  		<%= image_tag image.image.url  %>
 		  	</div>
-		  <% end %>	
-    	
+			<% end %>	
+		
 			<div class="bs-callout bs-callout-theme">
 			  <h4>Project Description</h4>
 			  <p><%= @project.description.html_safe %></p>
@@ -36,6 +36,14 @@
 
 			<%= link_to "< back", :back %>
 
-    </div>
+			<% if @project.belongs_to?(current_user.id) %>
+
+				<%= button_to "Delete Project", project_path(@project.id), :method=>"delete", :class=>"btn btn-danger pull-right", data: {confirm: "Are you sure to delete this project?"} %>
+
+				<%= button_to "Edit Project", edit_project_path(@project.id) , :method=>"get", :class=>"btn btn-default pull-right mrgrht10" %>
+
+			<% end %>
+
+		</div>
 	</div>
 </div>

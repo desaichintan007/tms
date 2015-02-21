@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
 
 	before_action :authenticate_user!, :except => [:index, :show, :portfolio]
-	before_action :get_project, :only => [:show]
+	before_action :get_project, :only => [:show, :edit, :update, :destroy]
+	before_action :check_authority, :only => [:edit, :update, :destroy]
 
 	def index
 		@user = current_user
@@ -36,10 +37,25 @@ class ProjectsController < ApplicationController
 	def edit
 	end
 
-	def update
+	def update		
+		if @project.update_attributes(project_params)
+			if params[:image].present?
+				@project_images.first.update_attributes(:image => params[:image])	
+			end
+			flash[:success] = "Project updated successfully.!"
+		else
+			flash[:error] = "Something went wrong. Can not update project details.!"
+		end
+		render :show
 	end
 
 	def destroy
+		if @project.destroy
+			flash[:success] = "Project deleted successfully.!"
+		else	
+			flash[:error] = "Something went wrong, can not delete project.!"
+		end
+		redirect_to :index
 	end
 
 	protected
@@ -51,5 +67,12 @@ class ProjectsController < ApplicationController
 	def get_project
 		@project = Project.find(params[:id])
 		@project_images = @project.pictures
+	end
+
+	def check_authority
+		unless @project.user == current_user
+			flash[:error] = "This project does not belongs to you, You can not perform action on it.!"
+			redirect_to root_path
+		end
 	end
 end
