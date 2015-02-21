@@ -3,6 +3,7 @@ class TendersController < ApplicationController
 	before_action :authenticate_user!, :except => [:show]
 	before_action :check_issuer?, :only => [:new, :create, :index]
 	before_action :get_tender, :only => [:show, :edit, :update, :destroy, :all_applications]
+	before_action :is_tender_issuer?, :only => [:select_application] 
 
 	def index
 		@all_tenders = current_user.tenders
@@ -55,6 +56,21 @@ class TendersController < ApplicationController
 		redirect_to tenders_path	 
 	end
 
+	def select_application
+		if SelectedApplication.create(:tender_id => params[:tender_id], :application_id => params[:application_id])
+			flash[:success] = "Application selected successfully.!"
+		end	
+		redirect_to :back
+	end
+
+	def reject_application
+		sa = SelectedApplication.find_by(:tender_id => params[:tender_id], :application_id => params[:application_id])
+		if sa.destroy
+			flash[:success] = "Removed application from selected.!"
+		end
+		redirect_to :back
+	end
+
 	protected
 
 	def check_issuer?
@@ -70,6 +86,13 @@ class TendersController < ApplicationController
 
 	def get_tender
 		@tender = Tender.find(params[:id])
+	end
+
+	def is_tender_issuer?
+		unless Tender.find(params[:tender_id]).user == current_user
+			flash[:error] = "This tender does not belongs to you. You can not perform action.!"
+			redirect_to root_path
+		end	
 	end
 
 end

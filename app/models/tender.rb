@@ -3,6 +3,7 @@ class Tender < ActiveRecord::Base
 	# Associations
 	belongs_to :user
 	has_many :applications
+	has_many :selected_applications
 
 	# Validations
 	validates_presence_of :title, :description, :start_date, :end_date, :notice_duration, :minimum_budget, :user_id
@@ -23,6 +24,10 @@ class Tender < ActiveRecord::Base
 
 	def is_upcoming?
 		start_date > Date.today
+	end
+
+	def selected_application_ids
+		return self.selected_applications.pluck(:application_id)
 	end
 
 end

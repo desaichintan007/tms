@@ -40,9 +40,12 @@
 			  </p>
 			</div>
 
-			<% if current_user.is_issuer? %>
-					<button class="btn btn-primary pull-right">Select This Applicant</button>
-					<button class="btn btn-danger pull-right mrgrht10">Reject This Proposal</button>
+			<% if @application.belongs_to_issuer?(current_user.id) %>
+				<% if @tender.selected_application_ids.include?(@application.id) %>
+					<%= button_to "Reject This Proposal", reject_application_tenders_path(:tender_id => @tender.id, :application_id => @application.id), :class => "btn btn-danger pull-right mrgrht10" %>
+				<% else %>
+				<%= button_to "Select This Application", select_application_tenders_path(:tender_id => @tender.id, :application_id => @application.id), :class => "btn btn-primary pull-right" %>
+				<% end %>
 			<% end %>	
 
 			<%= link_to "< back", :back %>

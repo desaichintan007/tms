@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     member do
       get "all_applications"
     end
+    collection do
+      post "select_application"
+      post "reject_application"
+    end
   end
 
   resources :applications
