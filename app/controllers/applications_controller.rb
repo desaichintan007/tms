@@ -6,6 +6,13 @@ class ApplicationsController < ApplicationController
 	before_action :get_application, :only => [:show]
 	before_action :check_authorised_user, :only => [:show]
 
+	def index
+		@all_applications = current_user.applications
+		@pending_applications = @all_applications.pending_applications
+		@selected_applications = @all_applications.selected_applications
+		@rejected_applications = @all_applications.rejected_applications
+	end
+
 	def new
 		@application = current_user.applications.build(:tender => @tender)
 	end

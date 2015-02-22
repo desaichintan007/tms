@@ -1,0 +1,157 @@
+<h2 class="mrgbtm20">My Applications</h2>
+
+<div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#all" aria-controls="home" role="tab" data-toggle="tab">All Applications</a>
+    </li>
+    <li role="presentation">
+      <a href="#pending" aria-controls="messages" role="tab" data-toggle="tab">Pending Applications</a>
+    </li>
+    <li role="presentation">
+      <a href="#selected" aria-controls="profile" role="tab" data-toggle="tab">Selected Applications</a>
+    </li>
+    <li role="presentation">
+      <a href="#rejected" aria-controls="settings" role="tab" data-toggle="tab">Rejected Applications</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane active" id="all">
+      <div class="row">
+        <div class="col-lg-12">  
+          <br>
+          <div class="table-responsive">
+            <table class="table table-striped">
+            	<tr>
+	              <th>Index</th>
+	              <th>Cover</th>
+	              <th>Estimated Budget</th>
+	              <th>Estimated Duration</th>
+	              <th>Status</th>
+	              <th>Tender</th>
+	              <th></th>
+	            </tr>  
+              <% @all_applications.each_with_index do |application,index| %>
+              	<% tender = application.tender %>
+              	<tr>
+              		<td><%= index+1 %></td>
+              		<td><%= application.cover %></td>
+              		<td><%= application.estimated_budget %></td>
+              		<td><%= application.estimated_time %></td>
+              		<td><%= application.status %></td>
+              		<td><%= link_to tender.title, tender_path(tender.id) %></td>
+              	</tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane fade" id="pending">
+      <div class="row">
+        <div class="col-lg-12">  
+          <br>
+          <div class="table-responsive">
+            <table class="table table-striped">
+            	<tr>
+	            	<th>Index</th>
+	              <th>Cover</th>
+	              <th>Estimated Budget</th>
+	              <th>Estimated Duration</th>
+	              <th>Status</th>
+	              <th>Tender</th>
+	              <th></th>
+	            </tr> 
+              <% @pending_applications.each_with_index do |application,index| %>
+              	<% tender = application.tender %>
+              	<tr>
+              		<td><%= index+1 %></td>
+              		<td><%= application.cover %></td>
+              		<td><%= application.estimated_budget %></td>
+              		<td><%= application.estimated_time %></td>
+              		<td><%= application.status %></td>
+              		<td><%= link_to tender.title, tender_path(tender.id) %></td>
+              	</tr>
+              <% end %>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="selected">
+      <div class="row">
+        <div class="col-lg-12">  
+          <br>
+          <div class="table-responsive">
+            <table class="table table-striped">
+            	<tr>
+	            	<th>Index</th>
+	              <th>Cover</th>
+	              <th>Estimated Budget</th>
+	              <th>Estimated Duration</th>
+	              <th>Status</th>
+	              <th>Tender</th>
+	              <th></th>
+              </tr>
+              <% @selected_applications.each_with_index do |application,index| %>
+              	<% tender = application.tender %>
+              	<tr>
+              		<td><%= index+1 %></td>
+              		<td><%= application.cover %></td>
+              		<td><%= application.estimated_budget %></td>
+              		<td><%= application.estimated_time %></td>
+              		<td><%= application.status %></td>
+              		<td><%= link_to tender.title, tender_path(tender.id) %></td>
+              	</tr>
+              <% end %>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="tabpanel" class="tab-pane fade" id="rejected">
+      <div class="row">
+        <div class="col-lg-12">  
+          <br>
+          <div class="table-responsive">
+            <table class="table table-striped">
+            	<tr>
+	            	<th>Index</th>
+	              <th>Cover</th>
+	              <th>Estimated Budget</th>
+	              <th>Estimated Duration</th>
+	              <th>Status</th>
+	              <th>Tender</th>
+	              <th></th>
+              </tr>
+              <% @rejected_applications.each_with_index do |application,index| %>
+              	<% tender = application.tender %>
+              	<tr>
+              		<td><%= index+1 %></td>
+              		<td><%= application.cover %></td>
+              		<td><%= application.estimated_budget %></td>
+              		<td><%= application.estimated_time %></td>
+              		<td><%= application.status %></td>
+              		<td><%= tender.title %></td>
+              	</tr>
+              <% end %>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+  </div>
+</div>
+
+<div>
+  <%= link_to "< Back", :back %>
+</div>
