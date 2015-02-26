@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def is_issuer?
     return current_user.is_issuer?
-  end
+  end 
 
 
 	protected
@@ -22,14 +22,16 @@ class ApplicationController < ActionController::Base
 	end
 
 	# Set path to redirect after sign in
-	def after_sign_in_path_for(resource)
-    if is_applicant?
+	def after_sign_in_path_for(resource)    
+    if resource.class.table_name=="admin_users"
+      admin_root_path
+    elsif is_applicant?
     	dashboard_applicants_path
     elsif	is_issuer?
     	dashboard_issuers_path
     else
     	root_path
-    end
+    end    
   end
 
 end

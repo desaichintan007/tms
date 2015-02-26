@@ -43,3 +43,4 @@ gem 'spring',        group: :development
 gem 'devise'
 gem "paperclip", "~> 4.2"
 gem 'ckeditor'
+gem 'activeadmin', github: 'activeadmin'

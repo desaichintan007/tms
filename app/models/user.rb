@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
   ROLE = ["Admin","Applicant","Issuer"]
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects
@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :applications
 
   validates_presence_of :first_name, :last_name, :address, :contact
+  scope :get_applicants, -> {where(:role => ROLE[1]).order(:id)}
+  scope :get_issuers, -> {where(:role => ROLE[2]).order(:id)}
 
   def full_name
     [first_name,last_name].join(" ")
