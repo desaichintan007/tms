@@ -1,0 +1,44 @@
+Hi <%= @applicant.full_name %>,
+<br><br>
+
+<p>
+You have successfully submitted your application to tender <b><%= @tender.title %></b>.<br>
+The issuer <%= @issuer.full_name %> will check your application and select/reject you based on it.<br>
+Please have patient till then.
+Your submitted application is as below.
+</p>
+
+<br><br>
+
+<p>
+	<table>
+		<tr>
+			<td> Applicant Name : </td>
+			<td> <%= @applicant.full_name %> </td>
+		</tr>
+		<tr>
+			<td> Cover: </td>
+			<td> <%= @application.cover %> </td>
+		</tr>
+		<tr>	
+			<td> Proposal : </td>
+			<td> <%= @application.proposal.html_safe %> </td>
+		</tr>
+		<tr>
+			<td> Estimated Budget : </td>
+			<td> <%= @application.estimated_budget %> </td>
+		</tr>
+		<tr>
+			<td> Estimated Duration : </td>
+			<td> <%= @application.estimated_time %> </td>
+		</tr>
+	</table>
+</p>	
+
+<br><br>
+
+<p>
+	All the best.<br>
+	<b>Team TMS</b>
+</p>
+

@@ -3,6 +3,7 @@ class ApplicantsController < ApplicationController
 	before_action :check_is_applicant?
 
 	def dashboard
+		@notifications = current_user.notifications rescue []
 	end
 
 	protected

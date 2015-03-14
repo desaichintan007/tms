@@ -3,6 +3,7 @@ class IssuersController < ApplicationController
 	before_filter :check_is_issuer?
 
 	def dashboard
+		@notifications = current_user.notifications rescue []
 	end
 
 	def check_is_issuer?

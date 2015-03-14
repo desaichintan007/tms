@@ -1,1 +1,18 @@
 Welcome Applicant <%= current_user.email %>
+
+<div class="row">
+	<div class="col-lg-offset-8 col-lg-4 mrgtop20">
+		<div class="notifications">
+			<div class="text-center"><b>Your Notifications</b></div>
+			<table class="table table-striped" style="height:100px;">
+				<% @notifications.each do |n| %>
+					<tr>
+						<td data-toggle="tooltip" data-placement="top" title="<%= n.message %>">
+							<%= link_to n.message.truncate(50), n.url %>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>	
+	</div>
+</div>

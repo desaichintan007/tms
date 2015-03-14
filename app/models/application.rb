@@ -4,6 +4,13 @@ class Application < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :tender
 	has_one :selected_application
+	after_create do
+		## Send notification mail to applicant and issuer
+		BackendJob.new.async.application_created(self,self.user,tender,tender.user) 
+
+		## Create notifications for applicant and isser
+		BackendJob.new.async.create_notifications_on_submitting_application(self,self.user,tender,tender.user)
+	end
 
 	# Constants
 	STATUS = ["pending","selected","rejected"]

@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require ckeditor/init
 //= require bootstrap.min
+//= require bootstrap-tooltip
 //= require style

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :tenders
   has_many :applications
+  has_many :notifications
 
   validates_presence_of :first_name, :last_name, :address, :contact
   scope :get_applicants, -> {where(:role => ROLE[1]).order(:id)}

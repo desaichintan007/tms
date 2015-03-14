@@ -45,6 +45,11 @@
               		<td><%= application.estimated_time %></td>
               		<td><%= application.status %></td>
               		<td><%= link_to tender.title, tender_path(tender.id) %></td>
+                  <td>
+                    <%= link_to application_path(:tender_id => tender.id, :id => application.id) do %>  
+                      <span class="glyphicon glyphicon-list-alt glyphicon-size-small"></span>
+                    <% end %>
+                  </td>
               	</tr>
               <% end %>
             </table>
