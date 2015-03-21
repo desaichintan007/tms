@@ -3,7 +3,7 @@ class IssuersController < ApplicationController
 	before_filter :check_is_issuer?
 
 	def dashboard
-		@notifications = current_user.notifications rescue []
+		@notifications = current_user.my_notifications.sort_by{|n| n.created_at }.reverse || []
 	end
 
 	def check_is_issuer?

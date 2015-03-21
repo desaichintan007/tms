@@ -2,17 +2,19 @@ Welcome Issuer <%= current_user.email %>
 
 <div class="row">
 	<div class="col-lg-offset-8 col-lg-4 mrgtop20">
-		<div class="text-center"><b>Your Notifications</b></div>
-		<table class="table table-striped">
-			<% @notifications.each do |n| %>
-				<tbody>
-					<tr>
-						<td data-toggle="tooltip" data-placement="top" title="<%= n.message %>">
-							<%= link_to n.message.truncate(50), n.url %>
-						</td>
-					</tr>
-				</tbody>	
-			<% end %>
-		</table>
+		<div class="notifications">
+			<div class="text-center"><b>Your Notifications</b></div>
+			<table class="table table-striped">
+				<% @notifications.each do |n| %>
+					<tbody>
+						<tr>
+							<td data-toggle="tooltip" data-placement="top" title="<%= n.message %>">
+								<%= link_to n.message.truncate(50), n.url %>
+							</td>
+						</tr>
+					</tbody>	
+				<% end %>
+			</table>
+		</div>	
 	</div>
 </div>

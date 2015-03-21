@@ -3,7 +3,7 @@ class ApplicantsController < ApplicationController
 	before_action :check_is_applicant?
 
 	def dashboard
-		@notifications = current_user.notifications rescue []
+		@notifications = current_user.my_notifications.sort_by{|n| n.created_at }.reverse || []
 	end
 
 	protected

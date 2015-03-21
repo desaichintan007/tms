@@ -26,4 +26,12 @@ class User < ActiveRecord::Base
   	return (self.role==ROLE[1] ? true : false)
   end
 
+  def my_notifications
+    if is_issuer?
+      notifications+Notification.issuers_notifications
+    else
+      notifications+Notification.applicants_notifications
+    end
+  end
+
 end

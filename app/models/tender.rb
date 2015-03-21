@@ -5,6 +5,10 @@ class Tender < ActiveRecord::Base
 	has_many :applications
 	has_many :selected_applications
 
+	after_create do 
+		BackendJob.new.async.create_notification_on_creating_tender(self,user)
+	end
+
 	# Validations
 	validates_presence_of :title, :description, :start_date, :end_date, :notice_duration, :minimum_budget, :user_id
 
@@ -29,6 +33,14 @@ class Tender < ActiveRecord::Base
 
 	def selected_application_ids
 		return self.selected_applications.pluck(:application_id)
+	end
+
+	def statistics_for_line_chart
+		data_hash = {}
+		applications.each{ |a|
+			data_hash[a.created_at.strftime("%Y-%m-%d")] = (data_hash[a.created_at.strftime("%Y-%m-%d")]+1) rescue 1			
+		}		
+		data_hash.to_a
 	end
 
 end
