@@ -1,26 +1,21 @@
 <div class="row">
-
-	<div class="col-lg-4">
-		<h4>My Bunker</h4>
-		<p>
-			Some Address 987,<br/>
-			+34 9054 5455, <br/>
-			Madrid, Spain.
-		</p>
-	</div>
 	
-	<div class="col-lg-4">
-		<h4>My Links</h4>
-		<p>
-			<a href="#">Dribbble</a><br/>
-			<a href="#">Twitter</a><br/>
-			<a href="#">Facebook</a>
-		</p>
-	</div>
-	
-	<div class="col-lg-4">
-		<h4>About Stanley</h4>
-		<p>This cute theme was created to showcase your work in a simple way. Use it wisely.</p>
+	<div class="col-lg-7">
+		<h4>About Tender Management System</h4>
+		<p>This website give tenders a good exposure to pool of massive tallented people who are willing to accomplish projects with passion.</p>
 	</div>
 
+	<div class="col-lg-3 col-lg-offset-2">
+		<h4>Links</h4>
+		<p>
+			<%= link_to "About Us" %><br/>
+			<%= link_to "Contact Us" %><br/>
+			<%= link_to "We on Facebook" %><br/>
+			<%= link_to "We on Twitter" %>
+			<% unless current_user.present? %>
+				<br/><%= link_to "Register Yourself", new_user_registration_path %>
+			<% end %>
+		</p>
+	</div>	
+	
 </div>

@@ -71,6 +71,13 @@ class TendersController < ApplicationController
 		redirect_to :back
 	end
 
+	def search_tender
+		tenders = Tender.where("title like '%#{params[:search]}%'")
+		render :json => {
+			tenders: tenders
+		}
+	end
+
 	protected
 
 	def check_issuer?

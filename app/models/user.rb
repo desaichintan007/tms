@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def all_applications
+    tenders.collect{|t| t.applications}.flatten
+  end
+
 end

@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-lg-8">
-  <%= line_chart @tender.statistics_for_line_chart %>
+    <%= line_chart @tender.statistics_for_line_chart %>
   </div>
 </div>
 
@@ -37,7 +37,7 @@
             <td><%= truncate(application.cover, :length => 30) %></td>
             <td><%= application.estimated_budget %></td>
             <td><%= application.estimated_time %></td>
-            <td><%= link_to application.user.full_name, portfolio_path(:user_id => application.user.id) %></td>
+            <td><%= link_to application.user.full_name, user_path(application.user.id) %></td>
             <td><%= application.status.capitalize %></td>
             <td>
               <%= link_to application_path(application.id,:tender_id => @tender.id) do %>  

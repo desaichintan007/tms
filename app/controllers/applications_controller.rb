@@ -29,6 +29,17 @@ class ApplicationsController < ApplicationController
 		end	
 	end
 
+	def edit
+		@application = Application.find(params[:id])
+		@tender = @application.tender		
+	end
+
+	def update
+		@application = Application.find(params[:id])
+		@application.update_attributes(application_params)
+		redirect_to application_path(:id => @application.id, :tender_id => @application.tender_id)
+	end
+
 	def show
 	end
 
@@ -68,5 +79,7 @@ class ApplicationsController < ApplicationController
 			redirect_to root_path
 		end
 	end
+	 
+
 
 end

@@ -1,0 +1,48 @@
+<div class="container pt">
+  <div class="row">
+    <div class="centered">
+      <h3>User Profile</h3>
+    </div>
+  </div>
+
+
+  <div class="row mt">  
+    <div class="col-lg-8 col-lg-offset-2">  
+
+      <table class="table table-striped">
+        <tr>
+          <td><strong>Name</strong></td>
+          <td><%= @user.full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>About Me</strong></td>
+          <td><%= @user.description %></td>
+        </tr>
+        <tr>
+          <td><strong>Address</strong></td>
+          <td><%= @user.address %></td>
+        </tr>
+        <tr>
+          <td><strong>Contanct Numner</strong></td>
+          <td><%= @user.contact %></td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td><strong>Website</strong></td>
+          <td><%= @user.website %></td>
+        </tr>
+      </table>
+
+      <%= link_to "< Back", :back %>
+      <div class="pull-right">
+        <%= link_to "View portfoliio >", portfolio_path(user_id: @user.id) %>
+      </div>
+
+
+    </div>
+  </div>  
+
+</div>

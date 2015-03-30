@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-lg-12">
+
+	<h3>All Applications</h3>
+
+		<div class="table-responsive mrgtop25 mrgbtm20">
+			<table class="table table-striped">
+				<tr>
+					<th>Index</th>
+					<th>Tender</th>
+					<th>Application Cover</th>
+					<th>EstimatedBudget</th>
+					<th>Date</th>
+					<th>Proposal By</th>
+					<th></th>
+				</tr>
+				<% @all_applications.each_with_index do |application,index| %>
+					<tr>
+						<td><%= index+1 %></td>
+						<td>
+							<%= link_to application.tender.title, tender_path(application.tender.id) %> 
+							<small data-toggle="tooltip" data-placement="top" title="click all to view all applications of <%= application.tender.title %>">
+								(<%= link_to "all", all_applications_tender_path(application.tender.id) %>)
+							</small>
+						</td>
+						<td><%= application.cover %></td>
+						<td><%= application.estimated_budget %></td>
+						<td><%= application.created_at.strftime("%d-%m-%Y") %></td>
+						<td><%= link_to application.user.full_name, user_path(application.user.id) %></td>
+						<td>
+							<%= link_to application_path(id: application.id, tender_id: application.tender.id) do %>  
+								<span class="glyphicon glyphicon-list-alt glyphicon-size-small"></span>
+  						<% end %> 
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>		
+	</div>
+</div>
+

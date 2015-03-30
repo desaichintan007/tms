@@ -1,0 +1,19 @@
+<h3>Tender Statistics</h3>
+
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2">
+		<%= pie_chart @statistics, library: {is3D: true} %>
+		<table class="table table-striped">
+			<th>Tender</th>
+			<th>Total Applications</th>
+			<th></th>
+			<% @statistics.each_with_index do |s,i| %>
+				<tr>
+					<td><%= link_to s[0], tender_path(@tenders[i].id) %></td>
+					<td><%= s[1] %></td>				
+					<td><small><%= link_to "View all applications", all_applications_tender_path(@tenders[i]) %></small></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

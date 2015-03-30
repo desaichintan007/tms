@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   root :to => "homes#index"
   get "/active_tenders" => "homes#all_active_tenders"
   get "/upcoming_tenders" => "homes#all_upcoming_tenders"
+  get "/all_applications" => "issuers#all_applications"
 
   resources :users
 
   resources :issuers do
     collection do
       get "dashboard"
+      get "all_applications"
+      get "tender_statistics"
     end
   end
   
@@ -31,6 +34,7 @@ Rails.application.routes.draw do
     collection do
       post "select_application"
       post "reject_application"
+      post "search_tender"
     end
   end
 

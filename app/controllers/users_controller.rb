@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :fetch_user, :only => [:edit, :update]
+	before_action :fetch_user, :only => [:edit, :update, :show]
+	before_action :check_user_authentication, :only => [:edit, :update]
 
 	def index
 	end
@@ -18,6 +19,9 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def show
+	end
+
 	protected
 
 	def user_params
@@ -26,6 +30,13 @@ class UsersController < ApplicationController
 
 	def fetch_user
 		@user = User.find(params[:id])
+	end
+
+	def check_user_authentication
+		unless @user == current_user
+			flash[:error] = "You are not allowed to access this page."
+			redirect_to root_path
+		end
 	end
 
 end
