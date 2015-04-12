@@ -1,6 +1,6 @@
 class TendersController < ApplicationController
 
-	before_action :authenticate_user!, :except => [:show]
+	before_action :authenticate_user!, :except => [:show, :search_tender]
 	before_action :check_issuer?, :only => [:new, :create, :index]
 	before_action :get_tender, :only => [:show, :edit, :update, :destroy, :all_applications]
 	before_action :is_tender_issuer?, :only => [:select_application] 
@@ -72,10 +72,10 @@ class TendersController < ApplicationController
 	end
 
 	def search_tender
-		tenders = Tender.where("title like '%#{params[:search]}%'")
-		render :json => {
-			tenders: tenders
-		}
+		@tenders = Tender.where("title like '%#{params[:search]}%'")
+		respond_to do |format|
+    		format.js
+  		end
 	end
 
 	protected
@@ -92,12 +92,16 @@ class TendersController < ApplicationController
 	end
 
 	def get_tender
-		@tender = Tender.find(params[:id])
+		@tender = Tender.find(params[:id]) rescue nil
+		if @tender.blank?
+			flash[:error] = "Sorry, the tender is not found. Might be removed from the Issuer.!"
+			redirect_to dashboard_path
+		end		
 	end
 
 	def is_tender_issuer?
 		unless Tender.find(params[:tender_id]).user == current_user
-			flash[:error] = "This tender does not belongs to you. You can not perform action.!"
+			flash[:error] = "This Tender does not belongs to you. You can not perform action.!"
 			redirect_to root_path
 		end	
 	end

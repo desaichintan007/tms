@@ -1,0 +1,22 @@
+<table class="table table-striped">
+	<tr>
+		<th>Title</th>
+		<th>Started Date</th>
+		<th>Ending Date</th>
+		<th>Tender By</th>
+		<th>Apply</th>
+		<th>View</th>
+	</tr>
+              
+  <% active_tenders.each do |tender| %>
+    <tr>
+        <td><b><%= tender.title %></b></td>
+        <td><%= tender.start_date %></td>
+        <td><%= tender.end_date %></td>
+        <td><%= link_to tender.user.full_name, portfolio_path(:user_id => tender.user_id) %></td>
+        <td><%= link_to "Apply", new_application_path(:tender_id => tender.id) %></td>
+        <td><%= link_to "View", tender_path(tender.id) %></td>
+    </tr>
+  <% end %>            
+
+</table>		

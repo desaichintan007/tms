@@ -1,0 +1,2 @@
+$("#searchResult").empty()
+$("#searchResult").append("<%= escape_javascript render(:partial => 'homes/all_active_tender_search', :locals => { :active_tenders => @tenders }) %>");

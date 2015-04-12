@@ -15,28 +15,11 @@
     <div class="col-lg-8 col-lg-offset-2">
       <%= text_field_tag :search, nil, class: "form-control", id: "search_box", placeholder: "Search project or user here..." %>
       <div id="search_message"></div> <br>
-	    <div class="table-responsive"> 
-	    	<table class="table table-striped">
-	  			<tr>
-	  				<th>Title</th>
-	  				<th>Started Date</th>
-	  				<th>Ending Date</th>
-	  				<th>Tender By</th>
-	  				<th>Apply</th>
-	  				<th>View</th>
-	  			</tr>
-	  			<% @active_tenders.each do |tender| %>
-            <tr>
-              <td><b><%= tender.title %></b></td>
-              <td><%= tender.start_date %></td>
-              <td><%= tender.end_date %></td>
-              <td><%= link_to tender.user.full_name, portfolio_path(:user_id => tender.user_id) %></td>
-              <td><%= link_to "Apply", new_application_path(:tender_id => tender.id) %></td>
-              <td><%= link_to "View", tender_path(tender.id) %></td>
-            </tr>
-          <% end %>  
-				</table>
-			</div>	
+  	    <div class="table-responsive"> 
+          <div id="searchResult">
+    	    	<%= render partial: "homes/all_active_tender_search", locals:{:active_tenders => @active_tenders} %>
+  		    </div>	
+        </div>
 			<%= link_to "< Back", :back %>
     </div>
   </div>
@@ -44,17 +27,12 @@
 </div>
 
 <script>
-$("#search_box").blur(function(){
-  val = this.value
-  $.ajax({
-    url: "/tenders/search_tender",
-    method: "POST",
-    data: {search: val},
-    success: function(response){
-
-      $("#search_message").html(response.tenders.length+" records found with word "+val)
-    }
+  $("#search_box").keyup(function(){
+    val = this.value
+    $.ajax({
+      url: "/tenders/search_tender",
+      method: "POST",
+      data: {search: val}
+    })
   })
-})
-
 </script>

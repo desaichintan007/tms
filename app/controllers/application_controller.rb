@@ -13,6 +13,21 @@ class ApplicationController < ActionController::Base
     return current_user.is_issuer?
   end 
 
+  def dashboard_path
+    if user_signed_in?
+      if current_user.is_issuer?
+        dashboard_issuers_path
+      elsif current_user.is_applicant?
+        dashboard_applicants_path
+      else
+        root_path
+      end
+    else
+      root_path
+    end
+  end
+
+
 
 	protected
 
